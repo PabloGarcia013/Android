@@ -4,5 +4,8 @@
     <string name="estamosEnLinear">Estamos en el Linear Layout</string>
     <string name="estamosEnRelative">Estamos en el Relative Layout</string>
     <string name="estamosEnFrame">Estamos en el Frame Layout</string>
-    <string name="goToRelative">Go to Relative</string>
+    <string name="goToRelative1">Go to Relative 1</string>
+    <string name="goToRelative2">Go to Relative 2</string>
+    <string name="entrar">Entrar</string>
+    <string name="salir">Salir</string>
 </resources>
