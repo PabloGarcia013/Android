@@ -10,12 +10,12 @@ import android.view.ViewGroup;
 /**
  * Created by cice on 3/12/15.
  */
-public class SecondFragment extends Fragment {
+public class Page1Fragment extends Fragment {
 
-    public static SecondFragment newInstance() {
+    public static Page1Fragment newInstance() {
 
         Bundle args = new Bundle();
-        SecondFragment fragment = new SecondFragment();
+        Page1Fragment fragment = new Page1Fragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -25,9 +25,12 @@ public class SecondFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
+
+    // Cuando se crea le estoy inflando el xml, es decir, como sabemos un xml no se puede mostrar por si mismo
+    // Tenemos que inflarlo en una vista, por lo tanto cuando se llama esta
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.second_fragment, container, false);
+        return inflater.inflate(R.layout.fragment_page_1,container,false);
     }
 }

@@ -9,27 +9,28 @@ import java.util.ArrayList;
 /**
  * Created by cice on 3/12/15.
  */
-public class MyViewPagerAdapter extends FragmentPagerAdapter {
+public class ViewPagerAdapter extends FragmentPagerAdapter {
 
-    // declaramos los fragments
-    ArrayList<Fragment> arrayList;
+    // declaramos el array de los fragments.
+    ArrayList<Fragment> fragmentArrayList;
 
-    public MyViewPagerAdapter(FragmentManager fm) {
+    public ViewPagerAdapter(FragmentManager fm, ArrayList<Fragment> fragmentArrayList) {
         super(fm);
+        this.fragmentArrayList = fragmentArrayList;
     }
 
     @Override
     public Fragment getItem(int position) {
-        return this.arrayList.get(position);
+        return this.fragmentArrayList.get(position);
     }
 
     // Aqui declaramos que como máximo se va a llamar a NUM_PAGES paginas es decir nunca accederemos a una posicion vacía.
     @Override
     public int getCount() {
-        return this.arrayList.size();
+        return this.fragmentArrayList.size();
     }
 
-    public void addFragment(Fragment f){
-        this.arrayList.add(f);
+    public void addFramgent(Fragment fragment){
+       this.fragmentArrayList.add(fragment);
     }
 }
