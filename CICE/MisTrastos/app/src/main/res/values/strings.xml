@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Mis Trastos</string>
+    <string name="categories">Categorías</string>
+    <string name="inventario">Inventario</string>
+</resources>
