@@ -43,4 +43,22 @@ public class BasicRecyclerViewAdapter extends RecyclerView.Adapter<BasicViewHold
     public int getItemCount() {
         return arrayList.size();
     }
+
+    public void addString(int position,String string){
+        this.arrayList.add(string);
+        notifyItemInserted(position);
+    }
+
+    public void removeString(int position){
+        this.arrayList.remove(position);
+        notifyItemInserted(position);
+    }
+
+    public void setDataSet(ArrayList<String> arrayList){
+        this.arrayList = arrayList;
+        notifyDataSetChanged();
+
+    }
+
+
 }
