@@ -2,4 +2,6 @@
     <string name="app_name">Mis Trastos</string>
     <string name="categories">Categorías</string>
     <string name="inventario">Inventario</string>
+    <string name="test_text">Nombre de prueba</string>
+    <string name="test_info_text">Texto de prueba de la información del trasto.</string>
 </resources>

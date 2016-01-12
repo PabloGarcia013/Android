@@ -1,4 +1,4 @@
-package com.example.cice.mistrastos;
+package com.example.cice.mistrastos.viewpager;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

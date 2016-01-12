@@ -1,4 +1,4 @@
-package com.example.cice.mistrastos;
+package com.example.cice.mistrastos.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,6 +13,10 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.cice.mistrastos.R;
+import com.example.cice.mistrastos.activity.MainActivity;
+import com.example.cice.mistrastos.viewpager.MainViewPagerAdapter;
 
 import java.util.ArrayList;
 
@@ -29,12 +33,8 @@ public class InventoryFragment extends Fragment {
     MainActivity mainActivity;
 
     public static InventoryFragment newInstance() {
-        
-        Bundle args = new Bundle();
-        
-        InventoryFragment fragment = new InventoryFragment();
-        fragment.setArguments(args);
-        return fragment;
+
+        return new InventoryFragment();
     }
 
     @Override
@@ -57,8 +57,8 @@ public class InventoryFragment extends Fragment {
     }
 
     private void doBindings(View layout){
-        toolbar = (Toolbar) layout.findViewById(R.id.toolbar);
         appBarLayout = (AppBarLayout) layout.findViewById(R.id.appbar_layout);
+        toolbar = (Toolbar) layout.findViewById(R.id.toolbar);
         tabLayout = (TabLayout) layout.findViewById(R.id.tab_layout);
         viewPager = (ViewPager) layout.findViewById(R.id.view_pager);
     }
@@ -81,7 +81,7 @@ public class InventoryFragment extends Fragment {
         fragments.add(RecyclerViewFragment.newInstance());
         fragments.add(RecyclerViewFragment.newInstance());
 
-        MainViewPagerAdapter mainViewPagerAdapter = new MainViewPagerAdapter(getFragmentManager(),fragments);
+        MainViewPagerAdapter mainViewPagerAdapter = new MainViewPagerAdapter(getChildFragmentManager(),fragments);
         viewPager.setAdapter(mainViewPagerAdapter);
     }
 
