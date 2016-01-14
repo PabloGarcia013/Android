@@ -1,5 +1,6 @@
 package com.example.cice.mistrastos.fragment;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -23,6 +24,11 @@ import java.util.ArrayList;
  */
 public class RecyclerViewFragment extends Fragment {
 
+    private static final int REQ_CODE = 1;
+    RecyclerView recyclerView;
+    TrastoRecyclerAdapater adapter;
+
+
     public static RecyclerViewFragment newInstance() {
 
         Bundle args = new Bundle();
@@ -43,7 +49,7 @@ public class RecyclerViewFragment extends Fragment {
 
         View layout = inflater.inflate(R.layout.fragment_recycler_view,container,false);
 
-        RecyclerView recyclerView = (RecyclerView)layout.findViewById(R.id.recycler_view);
+        recyclerView = (RecyclerView)layout.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         //FAB
@@ -52,11 +58,11 @@ public class RecyclerViewFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), NewTrastoActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, REQ_CODE);
             }
         });
 
-        TrastoRecyclerAdapater adapter = new TrastoRecyclerAdapater(getContext(),getTrastos());
+        adapter = new TrastoRecyclerAdapater(getContext(),getTrastos());
         recyclerView.setAdapter(adapter);
 
         return layout;
@@ -66,17 +72,29 @@ public class RecyclerViewFragment extends Fragment {
         ArrayList<Trasto> trastos = new ArrayList<>();
 
         trastos.add(new Trasto("Cosa 1",true));
-        trastos.add(new Trasto("Cosa 2",true));
+        trastos.add(new Trasto("Cosa 2", true));
         trastos.add(new Trasto("Cosa 3",true));
         trastos.add(new Trasto("Cosa 4",true));
         trastos.add(new Trasto("Cosa 5",true));
         trastos.add(new Trasto("Cosa 6",true));
         trastos.add(new Trasto("Cosa 7",true));
         trastos.add(new Trasto("Cosa 8",true));
-        trastos.add(new Trasto("Cosa 9",true));
+        trastos.add(new Trasto("Cosa 9", true));
         trastos.add(new Trasto("Cosa 10",true));
-        trastos.add(new Trasto("Cosa 11",true));
+        trastos.add(new Trasto("Cosa 11", true));
 
         return trastos;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == REQ_CODE && resultCode == Activity.RESULT_OK){
+            Trasto trasto = data.getParcelableExtra("trasto");
+            adapter.insertTrasto(trasto);
+        }
+        recyclerView.scrollToPosition(0);
+        adapter.notifyItemInserted(0);
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

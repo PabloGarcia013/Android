@@ -55,4 +55,8 @@ public class TrastoRecyclerAdapater extends RecyclerView.Adapter<TrastoViewHolde
         intent.putExtra("trasto",trasto);
         context.startActivity(intent);
     }
+
+    public void insertTrasto(Trasto trasto){
+        trastos.add(0,trasto);
+    }
 }

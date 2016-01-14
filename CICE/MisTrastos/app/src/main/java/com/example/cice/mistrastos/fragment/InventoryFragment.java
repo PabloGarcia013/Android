@@ -1,5 +1,6 @@
 package com.example.cice.mistrastos.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
@@ -99,5 +100,17 @@ public class InventoryFragment extends Fragment {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        super.onActivityResult(requestCode, resultCode, data);
+        // Estamos cogiendo el fragment de la posición 0 y llamamos manualmente al metodo onActivityResult.
+        getChildFragmentManager()
+                .getFragments()
+                .get(0)
+                .onActivityResult(requestCode,resultCode,data);
+
     }
 }
