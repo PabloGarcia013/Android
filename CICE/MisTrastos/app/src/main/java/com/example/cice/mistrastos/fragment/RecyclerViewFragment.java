@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 
 import com.example.cice.mistrastos.R;
 import com.example.cice.mistrastos.activity.NewTrastoActivity;
+import com.example.cice.mistrastos.api.ApiManager;
 import com.example.cice.mistrastos.recyclerview.adapter.TrastoRecyclerAdapater;
 import com.example.cice.mistrastos.model.Trasto;
 
@@ -25,8 +26,10 @@ import java.util.ArrayList;
 public class RecyclerViewFragment extends Fragment {
 
     private static final int REQ_CODE = 1;
+
     RecyclerView recyclerView;
     TrastoRecyclerAdapater adapter;
+    ApiManager apiManager;
 
 
     public static RecyclerViewFragment newInstance() {
@@ -35,12 +38,14 @@ public class RecyclerViewFragment extends Fragment {
 
         RecyclerViewFragment fragment = new RecyclerViewFragment();
         fragment.setArguments(args);
+
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.apiManager =  new ApiManager(getContext());
     }
 
     @Nullable
@@ -69,21 +74,7 @@ public class RecyclerViewFragment extends Fragment {
     }
 
     private ArrayList<Trasto> getTrastos(){
-        ArrayList<Trasto> trastos = new ArrayList<>();
-
-        trastos.add(new Trasto("Cosa 1",true));
-        trastos.add(new Trasto("Cosa 2", true));
-        trastos.add(new Trasto("Cosa 3",true));
-        trastos.add(new Trasto("Cosa 4",true));
-        trastos.add(new Trasto("Cosa 5",true));
-        trastos.add(new Trasto("Cosa 6",true));
-        trastos.add(new Trasto("Cosa 7",true));
-        trastos.add(new Trasto("Cosa 8",true));
-        trastos.add(new Trasto("Cosa 9", true));
-        trastos.add(new Trasto("Cosa 10",true));
-        trastos.add(new Trasto("Cosa 11", true));
-
-        return trastos;
+        return apiManager.getTrastos();
     }
 
     @Override

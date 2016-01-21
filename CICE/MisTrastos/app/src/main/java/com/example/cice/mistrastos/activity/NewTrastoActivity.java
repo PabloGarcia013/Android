@@ -13,6 +13,8 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 
 import com.example.cice.mistrastos.R;
+import com.example.cice.mistrastos.api.ApiManager;
+import com.example.cice.mistrastos.api.TrastoException;
 import com.example.cice.mistrastos.model.Trasto;
 
 public class NewTrastoActivity extends AppCompatActivity {
@@ -89,7 +91,8 @@ public class NewTrastoActivity extends AppCompatActivity {
         trasto.setName(name);
 
         String info = editTextInfo.getText().toString().trim();
-        trasto.setInfo(info);
+        if(!info.isEmpty())
+            trasto.setInfo(info);
 
         String stringPrice = editTextPrice.getText().toString().trim();
         if(checkBox.isChecked()){
@@ -110,15 +113,19 @@ public class NewTrastoActivity extends AppCompatActivity {
             trasto.setPrice(price);
         }
 
-        // Creamos el trasto
+        // Creamos el trasto y lo metemos en bd.
 
         Intent result = new Intent();
         result.putExtra("trasto", trasto);
-            setResult(RESULT_OK,result);
+        try {
+            new ApiManager(this).insertTrasto(trasto);
+            setResult(RESULT_OK, result);
+        } catch (TrastoException e) {
+            setResult(RESULT_CANCELED, result);
+            e.printStackTrace();
+        }
         finish();
     }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

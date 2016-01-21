@@ -1,4 +1,4 @@
-package com.example.cice.mistrastos.model;
+package com.example.cice.sqlite.Model;
 
 import android.graphics.Bitmap;
 import android.os.Parcel;
