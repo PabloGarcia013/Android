@@ -107,4 +107,41 @@ public class TrastosDatabaseManager implements TrastosTable {
         return trastos;
     }
 
+    @Override
+    public ArrayList<Trasto> getOnSaleTrastos() {
+
+        String selection = TrastosTable.COLUMN_ONSALE + "=?";
+        String[] selectionArgs = {TrastosTable.ON_SALE};
+        SQLiteDatabase db = databaseManager.getReadableDatabase();
+        Cursor cursor = db.query(TrastosTable.TABLE_NAME,
+                TrastosTable.PROJECTION_TOTAL,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null);
+        ArrayList<Trasto> trastos = TrastosDatabaseParser.parseTrastos(cursor);
+        db.close();
+        return trastos;
+
+    }
+
+    @Override
+    public ArrayList<Trasto> getNotOnSaleTrastos() {
+        String selection = TrastosTable.COLUMN_ONSALE + "=?";
+        String[] selectionArgs = {TrastosTable.NOT_ON_SALE};
+        SQLiteDatabase db = databaseManager.getReadableDatabase();
+        Cursor cursor = db.query(TrastosTable.TABLE_NAME,
+                TrastosTable.PROJECTION_TOTAL,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null);
+        ArrayList<Trasto> trastos = TrastosDatabaseParser.parseTrastos(cursor);
+        db.close();
+        return trastos;
+    }
+
+
 }

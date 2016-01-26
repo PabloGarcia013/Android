@@ -57,6 +57,11 @@ public class TrastoRecyclerAdapater extends RecyclerView.Adapter<TrastoViewHolde
     }
 
     public void insertTrasto(Trasto trasto){
-        trastos.add(0,trasto);
+        trastos.add(0, trasto);
+    }
+
+    public void setDataSet(ArrayList<Trasto> trastos){
+        this.trastos = trastos;
+        notifyDataSetChanged();
     }
 }

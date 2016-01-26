@@ -36,6 +36,15 @@ public class ApiManager {
         return trastosDatabaseManager.getTrastos();
     }
 
+    public ArrayList<Trasto> getOnSaleTrastos(){
+
+        return trastosDatabaseManager.getOnSaleTrastos();
+    }
+    public ArrayList<Trasto> getNotOnSaleTrastos(){
+
+        return trastosDatabaseManager.getNotOnSaleTrastos();
+    }
+
     public Trasto getTrasto(long id) throws TrastoException {
         try {
             return trastosDatabaseManager.getTrasto(id);
@@ -47,4 +56,6 @@ public class ApiManager {
     public void deleteTrasto(Trasto trasto){
         trastosDatabaseManager.deleteTrasto(trasto);
     }
+
+
 }

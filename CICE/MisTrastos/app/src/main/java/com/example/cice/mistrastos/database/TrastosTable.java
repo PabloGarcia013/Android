@@ -10,6 +10,9 @@ import java.util.ArrayList;
  */
 public interface TrastosTable {
 
+    String ON_SALE = "1";
+    String NOT_ON_SALE = "0";
+
     String TABLE_NAME = "t_trastos";
 
     String COLUMN_ID        = "id";
@@ -66,4 +69,6 @@ public interface TrastosTable {
     void updateTrasto(Trasto trasto);
     Trasto getTrasto(long id) throws DatabaseException;
     ArrayList<Trasto> getTrastos();
+    ArrayList<Trasto> getOnSaleTrastos();
+    ArrayList<Trasto> getNotOnSaleTrastos();
 }

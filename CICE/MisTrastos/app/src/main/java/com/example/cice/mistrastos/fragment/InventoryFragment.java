@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -17,6 +18,7 @@ import android.view.ViewGroup;
 
 import com.example.cice.mistrastos.R;
 import com.example.cice.mistrastos.activity.MainActivity;
+import com.example.cice.mistrastos.api.ApiManager;
 import com.example.cice.mistrastos.viewpager.MainViewPagerAdapter;
 
 import java.util.ArrayList;
@@ -30,8 +32,9 @@ public class InventoryFragment extends Fragment {
     AppBarLayout appBarLayout;
     TabLayout tabLayout;
     ViewPager viewPager;
-
+    RecyclerViewFragment allTrastoFragment, onSaleFragment, notOnSaleFragment;
     MainActivity mainActivity;
+    ApiManager apiManager;
 
     public static InventoryFragment newInstance() {
 
@@ -42,6 +45,7 @@ public class InventoryFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mainActivity = (MainActivity) getActivity();
+        apiManager = new ApiManager(getContext());
     }
 
     @Nullable
@@ -78,10 +82,13 @@ public class InventoryFragment extends Fragment {
 
         ArrayList<Fragment> fragments = new ArrayList<>();
 
-        fragments.add(RecyclerViewFragment.newInstance());
-        fragments.add(RecyclerViewFragment.newInstance());
-        fragments.add(RecyclerViewFragment.newInstance());
+        allTrastoFragment = RecyclerViewFragment.newInstance(apiManager.getTrastos(),true);
+        onSaleFragment = RecyclerViewFragment.newInstance(apiManager.getOnSaleTrastos(),false);
+        notOnSaleFragment = RecyclerViewFragment.newInstance(apiManager.getNotOnSaleTrastos(),false);
 
+        fragments.add(allTrastoFragment);
+        fragments.add(onSaleFragment);
+        fragments.add(notOnSaleFragment);
         MainViewPagerAdapter mainViewPagerAdapter = new MainViewPagerAdapter(getChildFragmentManager(),fragments);
         viewPager.setAdapter(mainViewPagerAdapter);
     }
@@ -107,10 +114,13 @@ public class InventoryFragment extends Fragment {
 
         super.onActivityResult(requestCode, resultCode, data);
         // Estamos cogiendo el fragment de la posición 0 y llamamos manualmente al metodo onActivityResult.
-        getChildFragmentManager()
+        /*getChildFragmentManager()
                 .getFragments()
-                .get(0)
-                .onActivityResult(requestCode,resultCode,data);
+                .get(0)*/
+
+        onSaleFragment.setDataSet(new ApiManager(getContext()).getOnSaleTrastos());
+        notOnSaleFragment.setDataSet(new ApiManager(getContext()).getNotOnSaleTrastos());
+        allTrastoFragment.onActivityResult(requestCode, resultCode, data);
 
     }
 }
