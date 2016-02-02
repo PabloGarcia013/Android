@@ -1,10 +1,7 @@
 package com.example.cice.mistrastos.fragment;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,9 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.cice.mistrastos.R;
-import com.example.cice.mistrastos.activity.NewTrastoActivity;
 import com.example.cice.mistrastos.api.ApiManager;
-import com.example.cice.mistrastos.recyclerview.adapter.TrastoRecyclerAdapater;
+import com.example.cice.mistrastos.recyclerview.adapter.TrastoRecyclerAdapter;
 import com.example.cice.mistrastos.model.Trasto;
 
 import java.util.ArrayList;
@@ -25,22 +21,17 @@ import java.util.ArrayList;
  */
 public class RecyclerViewFragment extends Fragment {
 
-    private static final int REQ_CODE = 1;
-    private static final String ARG_FAB = "with_fab";
     private static final String ARG_TRASTOS = "trastos";
 
     RecyclerView recyclerView;
-    TrastoRecyclerAdapater adapter;
+    TrastoRecyclerAdapter adapter;
     ApiManager apiManager;
-    boolean withFab;
     ArrayList<Trasto> trastos;
-
 
     public static RecyclerViewFragment newInstance(ArrayList<Trasto> trastos, boolean withFAB) {
 
         Bundle args = new Bundle();
 
-        args.putBoolean(ARG_FAB,withFAB);
         args.putParcelableArrayList(ARG_TRASTOS, trastos);
 
         RecyclerViewFragment fragment = new RecyclerViewFragment();
@@ -54,7 +45,6 @@ public class RecyclerViewFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         Bundle args = getArguments();
-        this.withFab = args.getBoolean(ARG_FAB);
         this.trastos = args.getParcelableArrayList(ARG_TRASTOS);
 
     }
@@ -69,30 +59,10 @@ public class RecyclerViewFragment extends Fragment {
 
         recyclerView = (RecyclerView)layout.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        //FAB
-        FloatingActionButton fab = (FloatingActionButton) layout.findViewById(R.id.fab);
-        if (withFab){
-            fab.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(getContext(), NewTrastoActivity.class);
-                    startActivityForResult(intent, REQ_CODE);
-                }
-            });
-        }else{
-            fab.setVisibility(View.GONE);
-        }
-
-
-        adapter = new TrastoRecyclerAdapater(getContext(),getTrastos());
+        adapter = new TrastoRecyclerAdapter(getContext());
         recyclerView.setAdapter(adapter);
 
         return layout;
-    }
-
-    private ArrayList<Trasto> getTrastos(){
-        return apiManager.getTrastos();
     }
 
     @Override
@@ -101,21 +71,17 @@ public class RecyclerViewFragment extends Fragment {
         adapter.setDataSet(trastos);
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-        if (requestCode == REQ_CODE && resultCode == Activity.RESULT_OK){
-            Trasto trasto = data.getParcelableExtra("trasto");
-            adapter.insertTrasto(trasto);
-        }
+    public void insertTrasto(Trasto trasto){
+        adapter.insertTrasto(trasto);
         recyclerView.scrollToPosition(0);
-        adapter.notifyItemInserted(0);
-        super.onActivityResult(requestCode, resultCode, data);
     }
 
     public void setDataSet(ArrayList<Trasto> trastos){
+
         this.trastos = trastos;
         getArguments().putParcelableArrayList(ARG_TRASTOS, trastos);
-        adapter.setDataSet(trastos);
+
+        if(adapter!=null)
+            adapter.setDataSet(trastos);
     }
 }

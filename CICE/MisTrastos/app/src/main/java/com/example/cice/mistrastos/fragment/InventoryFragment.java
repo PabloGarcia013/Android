@@ -1,9 +1,11 @@
 package com.example.cice.mistrastos.fragment;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
@@ -18,7 +20,9 @@ import android.view.ViewGroup;
 
 import com.example.cice.mistrastos.R;
 import com.example.cice.mistrastos.activity.MainActivity;
+import com.example.cice.mistrastos.activity.NewTrastoActivity;
 import com.example.cice.mistrastos.api.ApiManager;
+import com.example.cice.mistrastos.model.Trasto;
 import com.example.cice.mistrastos.viewpager.MainViewPagerAdapter;
 
 import java.util.ArrayList;
@@ -27,6 +31,8 @@ import java.util.ArrayList;
  * Created by CICE on 7/1/16.
  */
 public class InventoryFragment extends Fragment {
+
+    private static final int REQ_CODE = 1;
 
     Toolbar toolbar;
     AppBarLayout appBarLayout;
@@ -57,6 +63,17 @@ public class InventoryFragment extends Fragment {
         doBindings(layout);
         setupToolbar();
         setupTabLayout();
+
+        //FAB
+        FloatingActionButton fab = (FloatingActionButton) layout.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), NewTrastoActivity.class);
+                startActivityForResult(intent, REQ_CODE);
+            }
+        });
+
 
         return layout;
     }
@@ -120,7 +137,11 @@ public class InventoryFragment extends Fragment {
 
         onSaleFragment.setDataSet(new ApiManager(getContext()).getOnSaleTrastos());
         notOnSaleFragment.setDataSet(new ApiManager(getContext()).getNotOnSaleTrastos());
-        allTrastoFragment.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQ_CODE && resultCode == Activity.RESULT_OK) {
+            Trasto trasto = data.getParcelableExtra("trasto");
+            allTrastoFragment.insertTrasto(trasto);
+        }
 
+        //allTrastoFragment.onActivityResult(requestCode, resultCode, data);
     }
 }

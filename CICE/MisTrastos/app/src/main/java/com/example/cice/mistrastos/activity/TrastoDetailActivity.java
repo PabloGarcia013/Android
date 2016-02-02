@@ -1,7 +1,9 @@
 package com.example.cice.mistrastos.activity;
 
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -20,12 +22,27 @@ public class TrastoDetailActivity extends AppCompatActivity {
 
         trasto = getIntent().getParcelableExtra("trasto");
 
-        editTextName = (EditText) findViewById(R.id.edit_text_name);
-        editTextInfo = (EditText) findViewById(R.id.edit_text_info);
-        editTextPrice = (EditText) findViewById(R.id.edit_text_price);
+        this.setupToolbar();
+        this.bindings();
+
 
         editTextName.setText(trasto.getName());
         editTextInfo.setText(trasto.getInfo());
         editTextPrice.setText(String.valueOf(trasto.getPrice()));
+    }
+
+    private void bindings(){
+        editTextName = (EditText) findViewById(R.id.edit_text_name);
+        editTextInfo = (EditText) findViewById(R.id.edit_text_info);
+        editTextPrice = (EditText) findViewById(R.id.edit_text_price);
+    }
+
+    private void setupToolbar(){
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
     }
 }

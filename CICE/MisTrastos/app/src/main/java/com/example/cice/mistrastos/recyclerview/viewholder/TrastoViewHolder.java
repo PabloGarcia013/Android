@@ -15,6 +15,7 @@ public class TrastoViewHolder extends RecyclerView.ViewHolder {
 
     public interface OnRowClickListener{
         void onTrastoClicked(Trasto trasto);
+        void onTrastoLongClicked(Trasto trasto);
     }
 
     private Trasto trasto;
@@ -34,6 +35,14 @@ public class TrastoViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View v) {
                 mListener.onTrastoClicked(trasto);
+            }
+        });
+        itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                mListener.onTrastoLongClicked(trasto);
+
+                return true;
             }
         });
     }
