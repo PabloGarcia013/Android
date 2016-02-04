@@ -32,15 +32,15 @@ public interface PlayerTable {
             COLUMN_RANKING
     };
 
-    String ID       = COLUMN_ID         + "INTEGER PRIMARY KEY AUTOINCREMENT";
-    String NAME     = COLUMN_NAME       + "TEXT";
-    String SURNAME  = COLUMN_SURNAME    + "TEXT";
-    String NICK     = COLUMN_NICK       + "TEXT";
-    String ADDRESS  = COLUMN_ADDRESS    + "TEXT";
-    String EMAIL    = COLUMN_EMAIL      + "TEXT";
-    String DNI      = COLUMN_DNI        + "TEXT";
-    String AGE      = COLUMN_AGE        + "INTEGER";
-    String RANKING  = COLUMN_RANKING    + "INTEGER";
+    String ID       = COLUMN_ID         + " INTEGER PRIMARY KEY AUTOINCREMENT";
+    String NAME     = COLUMN_NAME       + " TEXT";
+    String SURNAME  = COLUMN_SURNAME    + " TEXT";
+    String NICK     = COLUMN_NICK       + " TEXT";
+    String ADDRESS  = COLUMN_ADDRESS    + " TEXT";
+    String EMAIL    = COLUMN_EMAIL      + " TEXT";
+    String DNI      = COLUMN_DNI        + " TEXT";
+    String AGE      = COLUMN_AGE        + " INTEGER";
+    String RANKING  = COLUMN_RANKING    + " INTEGER";
 
 
     String CREATE_TABLE = String.format("CREATE TABLE %s ( %s ,%s , %s, %s, %s, %s, %s, %s, %s)",

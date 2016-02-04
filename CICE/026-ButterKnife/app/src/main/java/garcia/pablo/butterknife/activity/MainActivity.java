@@ -13,6 +13,7 @@ import butterknife.ButterKnife;
 import butterknife.Bind;
 import garcia.pablo.butterknife.R;
 import garcia.pablo.butterknife.api.ApiManager;
+import garcia.pablo.butterknife.api.PlayerException;
 import garcia.pablo.butterknife.database.DataBaseManager;
 import garcia.pablo.butterknife.database.PlayerDataBaseManager;
 import garcia.pablo.butterknife.fragment.FragmentAdd;
@@ -39,7 +40,11 @@ public class MainActivity extends AppCompatActivity {
 
         playerDataBaseManager = new PlayerDataBaseManager(this);
 
-        //new ApiManager().insertPlayer(player1);
+        try {
+            new ApiManager(this).insertPlayer(player1);
+        } catch (PlayerException e) {
+            e.printStackTrace();
+        }
 
         this.setupToolbar();
         this.setupTabPager();
