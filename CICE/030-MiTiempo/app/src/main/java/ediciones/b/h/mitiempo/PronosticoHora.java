@@ -13,10 +13,12 @@ public class PronosticoHora {
     private String texto;
     private String humedad;
     private String presion;
-    private String icono;
+    private String iconoUrl;
+    private Bitmap icono;
     private String viento;
     private String dirViento;
-    private String icoViento;
+    private String icoVientoUrl;
+    private Bitmap icoViento;
 
     public PronosticoHora(String fecha, String horadatos, String temperatura, String texto, String humedad, String presion, String icono, String viento, String dirViento, String icoViento) {
         this.fecha = fecha;
@@ -25,10 +27,10 @@ public class PronosticoHora {
         this.texto = texto;
         this.humedad = humedad;
         this.presion = presion;
-        this.icono = icono;
+        this.iconoUrl = icono;
         this.viento = viento;
         this.dirViento = dirViento;
-        this.icoViento = icoViento;
+        this.icoVientoUrl = icoViento;
     }
 
     public String getFecha() {
@@ -55,8 +57,8 @@ public class PronosticoHora {
         return presion;
     }
 
-    public String getIcono() {
-        return icono;
+    public String getIconoUrl() {
+        return iconoUrl;
     }
 
     public String getViento() {
@@ -67,7 +69,63 @@ public class PronosticoHora {
         return dirViento;
     }
 
-    public String getIcoViento() {
+    public String getIcoVientoUrl() {
+        return icoVientoUrl;
+    }
+
+    public Bitmap getIcoViento() {
         return icoViento;
+    }
+
+    public Bitmap getIcono() {
+        return icono;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public void setHoradatos(String horadatos) {
+        this.horadatos = horadatos;
+    }
+
+    public void setTemperatura(String temperatura) {
+        this.temperatura = temperatura;
+    }
+
+    public void setTexto(String texto) {
+        this.texto = texto;
+    }
+
+    public void setHumedad(String humedad) {
+        this.humedad = humedad;
+    }
+
+    public void setPresion(String presion) {
+        this.presion = presion;
+    }
+
+    public void setIconoUrl(String iconoUrl) {
+        this.iconoUrl = iconoUrl;
+    }
+
+    public void setIcono(Bitmap icono) {
+        this.icono = icono;
+    }
+
+    public void setViento(String viento) {
+        this.viento = viento;
+    }
+
+    public void setDirViento(String dirViento) {
+        this.dirViento = dirViento;
+    }
+
+    public void setIcoVientoUrl(String icoVientoUrl) {
+        this.icoVientoUrl = icoVientoUrl;
+    }
+
+    public void setIcoViento(Bitmap icoViento) {
+        this.icoViento = icoViento;
     }
 }

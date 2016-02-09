@@ -47,4 +47,10 @@ public class PronosticoHoraAdapter extends RecyclerView.Adapter<PronosticoHoraVi
         this.pronosticoHoras = pronosticoHoras;
         notifyDataSetChanged();
     }
+
+    @Override
+    public void onViewRecycled(PronosticoHoraViewHolder holder) {
+        holder.cancelTask();
+        super.onViewRecycled(holder);
+    }
 }

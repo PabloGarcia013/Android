@@ -1,6 +1,9 @@
 package ediciones.b.h.mitiempo;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+
+import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -67,7 +70,7 @@ public class TuTiempoParser {
             for(int i = 0; i < horasNodelist.getLength(); i++){
                 Element horaElement = (Element)horasNodelist.item(i);
                 try{
-                    PronosticoHora pronosticoHora = getPronosticoHoraFromElement(horaElement);
+                    PronosticoHora pronosticoHora = getPronosticoHoraFromElement(context,horaElement);
                     pronosticoHoras.add(pronosticoHora);
                 }catch (TiempoParserException e){
                     e.printStackTrace();
@@ -82,20 +85,24 @@ public class TuTiempoParser {
 
     }
 
-    private static PronosticoHora getPronosticoHoraFromElement(Element horaElement) throws TiempoParserException {
+    private static PronosticoHora getPronosticoHoraFromElement(Context context, Element horaElement) throws TiempoParserException {
 
         String fecha = getStringForTagName(horaElement,"fecha");
-        String horadatos = getStringForTagName(horaElement,"hora_datos");;
-        String temperatura = getStringForTagName(horaElement,"temperatura");;
-        String texto = getStringForTagName(horaElement,"texto");;
-        String humedad = getStringForTagName(horaElement,"humedad");;
-        String presion = getStringForTagName(horaElement,"presion");;
-        String icono = getStringForTagName(horaElement, "fecha");;
-        String viento = getStringForTagName(horaElement,"viento");;
-        String dirViento = getStringForTagName(horaElement,"dir_viento");;
-        String icoViento = getStringForTagName(horaElement,"fecha");;
+        String horadatos = getStringForTagName(horaElement,"hora_datos");
+        String temperatura = getStringForTagName(horaElement,"temperatura");
+        String texto = getStringForTagName(horaElement,"texto");
+        String humedad = getStringForTagName(horaElement,"humedad");
+        String presion = getStringForTagName(horaElement,"presion");
+        String icono = getStringForTagName(horaElement, "icono");
+        String viento = getStringForTagName(horaElement,"viento");
+        String dirViento = getStringForTagName(horaElement,"dir_viento");
+        String icoViento = getStringForTagName(horaElement,"ico_viento");
 
-        return new PronosticoHora(fecha, horadatos, temperatura, texto, humedad, presion, icono, viento, dirViento, icoViento);
+
+
+        PronosticoHora pronosticoHora  = new PronosticoHora(fecha, horadatos, temperatura, texto, humedad, presion, icono, viento, dirViento, icoViento);
+
+        return pronosticoHora;
     }
 
     private static String getStringForTagName(Element element, String tagName) throws TiempoParserException {
