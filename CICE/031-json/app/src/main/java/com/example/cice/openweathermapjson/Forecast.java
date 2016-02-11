@@ -6,14 +6,18 @@ package com.example.cice.openweathermapjson;
 public class Forecast {
 
     String dateTime;
-    String dateTemp, minTemp, maxTemp;
+    String dayTemp, minTemp, maxTemp;
     String pressure, himidity;
     String text, description;
     String speed;
 
+    public Forecast(){
+
+    }
+
     public Forecast(String dateTime, String dateTemp, String minTemp, String maxTemp, String pressure, String himidity, String text, String description, String speed) {
         this.dateTime = dateTime;
-        this.dateTemp = dateTemp;
+        this.dayTemp = dateTemp;
         this.minTemp = minTemp;
         this.maxTemp = maxTemp;
         this.pressure = pressure;
@@ -31,12 +35,12 @@ public class Forecast {
         this.dateTime = dateTime;
     }
 
-    public String getDateTemp() {
-        return dateTemp;
+    public String getDayTemp() {
+        return dayTemp;
     }
 
-    public void setDateTemp(String dateTemp) {
-        this.dateTemp = dateTemp;
+    public void setDayTemp(String dayTemp) {
+        this.dayTemp = dayTemp;
     }
 
     public String getMinTemp() {
