@@ -9,26 +9,26 @@ import java.util.ArrayList;
  */
 public class ApiManager {
 
+    private Context context;
     private static ApiManager mInstance;
-    Context context;
-    HttpRequestManager httpRequestManager;
 
-    public static ApiManager getInstance(Context context){
+    private HttpRequestManager httpRequestManager;
 
-        if (mInstance == null){
+    public static ApiManager getInstance(Context context) {
+
+        if (mInstance==null) {
             mInstance = new ApiManager(context);
         }
+
         return mInstance;
     }
 
     private ApiManager(Context context) {
         this.context = context;
-        this.httpRequestManager = new HttpRequestManager();
+        httpRequestManager = new HttpRequestManager();
     }
 
     public ArrayList<Forecast> getDailyForecast(String city, int days) throws HttpException {
         return httpRequestManager.getDailyForecast(city, days);
     }
-
-
 }
