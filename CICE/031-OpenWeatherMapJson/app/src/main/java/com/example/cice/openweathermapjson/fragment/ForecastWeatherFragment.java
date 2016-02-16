@@ -1,4 +1,4 @@
-package com.example.cice.openweathermapjson;
+package com.example.cice.openweathermapjson.fragment;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -11,11 +11,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.cice.openweathermapjson.http.HttpException;
+import com.example.cice.openweathermapjson.R;
+import com.example.cice.openweathermapjson.api.ApiManager;
+import com.example.cice.openweathermapjson.model.Forecast;
+import com.example.cice.openweathermapjson.recyclerv_view.ForecastRecyclerAdapter;
+
 import java.util.ArrayList;
-import java.util.ConcurrentModificationException;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

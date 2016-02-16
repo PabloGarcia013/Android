@@ -1,13 +1,13 @@
-package com.example.cice.openweathermapjson;
+package com.example.cice.openweathermapjson.recyclerv_view;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
-import android.util.AttributeSet;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+
+import com.example.cice.openweathermapjson.viewpager.ForecastPagerAdapter;
+import com.example.cice.openweathermapjson.R;
 
 import java.util.ArrayList;
 

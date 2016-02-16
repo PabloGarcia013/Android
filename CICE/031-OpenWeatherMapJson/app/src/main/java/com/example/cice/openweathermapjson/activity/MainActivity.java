@@ -1,11 +1,10 @@
-package com.example.cice.openweathermapjson;
+package com.example.cice.openweathermapjson.activity;
 
-import android.app.ProgressDialog;
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ProgressBar;
-import android.widget.Toast;
+
+import com.example.cice.openweathermapjson.R;
+import com.example.cice.openweathermapjson.fragment.ForecastWeatherFragment;
 
 import java.util.ArrayList;
 

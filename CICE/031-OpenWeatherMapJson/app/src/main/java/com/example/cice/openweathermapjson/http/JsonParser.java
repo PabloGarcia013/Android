@@ -1,11 +1,11 @@
-package com.example.cice.openweathermapjson;
+package com.example.cice.openweathermapjson.http;
+
+import com.example.cice.openweathermapjson.model.Forecast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;

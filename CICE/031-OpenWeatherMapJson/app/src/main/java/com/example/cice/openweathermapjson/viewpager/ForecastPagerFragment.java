@@ -1,20 +1,15 @@
-package com.example.cice.openweathermapjson;
+package com.example.cice.openweathermapjson.viewpager;
 
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.ArrayList;
+import com.example.cice.openweathermapjson.R;
+import com.example.cice.openweathermapjson.model.Forecast;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

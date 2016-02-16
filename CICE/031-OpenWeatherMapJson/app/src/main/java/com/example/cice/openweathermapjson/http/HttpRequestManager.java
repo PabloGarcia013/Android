@@ -1,4 +1,6 @@
-package com.example.cice.openweathermapjson;
+package com.example.cice.openweathermapjson.http;
+
+import com.example.cice.openweathermapjson.model.Forecast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -37,7 +39,7 @@ public class HttpRequestManager {
 
         String query = HttpRequestHelper.createQuery(params);
 
-        String response = httpRequestHelper.getResponseFromUrl(API_URL + API_SERVICE + query);
+        String response = httpRequestHelper.getResponseFromUrlWithOkHttp(API_URL + API_SERVICE + query);
 
         ArrayList<Forecast> forecasts;
         try {

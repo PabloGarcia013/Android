@@ -1,4 +1,4 @@
-package com.example.cice.openweathermapjson;
+package com.example.cice.openweathermapjson.recyclerv_view;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
@@ -7,6 +7,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.cice.openweathermapjson.viewpager.ForecastPagerFragment;
+import com.example.cice.openweathermapjson.R;
+import com.example.cice.openweathermapjson.model.Forecast;
 
 import java.util.ArrayList;
 

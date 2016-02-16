@@ -1,4 +1,4 @@
-package com.example.cice.openweathermapjson;
+package com.example.cice.openweathermapjson.viewpager;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

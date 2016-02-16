@@ -1,6 +1,10 @@
-package com.example.cice.openweathermapjson;
+package com.example.cice.openweathermapjson.api;
 
 import android.content.Context;
+
+import com.example.cice.openweathermapjson.http.HttpException;
+import com.example.cice.openweathermapjson.http.HttpRequestManager;
+import com.example.cice.openweathermapjson.model.Forecast;
 
 import java.util.ArrayList;
 

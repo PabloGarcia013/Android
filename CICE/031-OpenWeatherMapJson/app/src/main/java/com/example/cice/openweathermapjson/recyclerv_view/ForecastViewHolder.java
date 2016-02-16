@@ -1,8 +1,11 @@
-package com.example.cice.openweathermapjson;
+package com.example.cice.openweathermapjson.recyclerv_view;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
+
+import com.example.cice.openweathermapjson.R;
+import com.example.cice.openweathermapjson.model.Forecast;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

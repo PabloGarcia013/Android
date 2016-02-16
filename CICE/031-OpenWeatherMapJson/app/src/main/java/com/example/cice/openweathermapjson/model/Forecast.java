@@ -1,4 +1,4 @@
-package com.example.cice.openweathermapjson;
+package com.example.cice.openweathermapjson.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
