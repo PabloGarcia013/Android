@@ -133,11 +133,7 @@ public class ForecastWeatherFragment extends Fragment{
         @Override
         protected ArrayList<Forecast> doInBackground(String... params) {
 
-            try {
-                Thread.sleep(3000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+
 
             try {
                 String forecastCity = params[0];
@@ -160,7 +156,13 @@ public class ForecastWeatherFragment extends Fragment{
                 progressDialog.dismiss();
             }
 
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             if (forecasts!=null) {
+
                 adapter.setDataSet(forecasts);
             } else {
                 Toast.makeText(context, error, Toast.LENGTH_SHORT).show();

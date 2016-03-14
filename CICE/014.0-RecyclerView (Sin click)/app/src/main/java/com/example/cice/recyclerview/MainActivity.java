@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
         // setup recyclerView
         // 1º ponemos el layout manager que va a manejar las filas
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Creamos el arrayList que pasaremos.
@@ -32,6 +33,6 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(new BasicRecyclerViewAdapter(arrayList));
 
         //Si estas seguro de que el tamaño de tu row del recycler view no va a cambiar en tiempo de ejecución, hay que poner
-        recyclerView.setHasFixedSize(true);
+        //recyclerView.setHasFixedSize(true);
     }
 }

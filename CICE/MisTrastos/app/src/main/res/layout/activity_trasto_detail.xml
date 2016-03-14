@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.example.cice.mistrastos.activity.TrastoDetailActivity">
+    tools:context="com.ejemploporti.activity.TrastoDetailActivity">
 
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
@@ -36,6 +36,12 @@
             </android.support.design.widget.CollapsingToolbarLayout>
 
         </android.support.design.widget.AppBarLayout>
+
+        <TextView
+            android:text="Este sería el texto del test."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
         <include layout="@layout/form_trasto"/>
 

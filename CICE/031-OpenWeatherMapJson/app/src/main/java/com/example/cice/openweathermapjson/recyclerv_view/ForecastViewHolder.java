@@ -28,7 +28,7 @@ public class ForecastViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void bind(Forecast forecast) {
-
+        itemView.setVisibility(View.VISIBLE);
         textViewDay.setText(forecast.getDateTime());
         textViewTemp.setText(String.format("%s ºC", forecast.getDayTemp()));
         textViewMaxTemp.setText(String.format("Max: %s ºC", forecast.getMaxTemp()));

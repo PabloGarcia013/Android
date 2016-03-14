@@ -1,4 +1,4 @@
-package com.example.cice.mistrastos;
+package com.ejemploporti.mistrastos;
 
 import org.junit.Test;
 
